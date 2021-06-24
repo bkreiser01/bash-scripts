@@ -1,0 +1,45 @@
+#!/bin/bash
+
+repos=(
+cs115
+cs135
+cs146
+cs284
+cs385
+cs392
+cs496
+)
+
+echo 'This script will refresh your git repos. This deletes the current repos'
+read -p  'Username: ' USR
+read -sp 'Password: ' PSWRD
+
+echo ''
+echo 'Removing Existing Repos...'
+
+for e in ${repos[@]}; do
+   echo "rm -rf" ${e}
+   rm -rf ${e}
+done
+
+echo ''
+echo 'Cloning Removed Repos...'
+
+for e in ${repos[@]}; do
+echo 'Cloning' ${e}
+
+/usr/bin/expect <(cat << EOF
+spawn git clone https://github.com/${USR}/${e}
+
+expect "Username for 'https://github.com':"
+send "${USR}\r"
+
+expect "Password for 'https://${USR}@github.com':"
+send "${PSWRD}\r"
+interact
+EOF
+)
+
+echo ''
+done
+
