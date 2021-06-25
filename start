@@ -1,0 +1,3 @@
+#!/bin/bash
+
+tmux new -c /home/mc-user/davis-server -s davis-server -d java -Xmx6G -jar server.jar --nogui

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+tmux send -t davis-server "$1" c-M;

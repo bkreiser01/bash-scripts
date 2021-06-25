@@ -1,0 +1,20 @@
+#!/bin/bash
+
+session="davis-server"
+
+tmux send -t ${session} "say SHUTTING DOWN IN 15 SECONDS" c-M;
+sleep 5
+tmux send -t ${session} "say SHUTTING DOWN IN 10 SECONDS" c-M;
+sleep 5
+tmux send -t ${session} "say SHUTTING DOWN IN 5 SECONDS" c-M;
+sleep 1
+tmux send -t ${session} "say SHUTTING DOWN IN 4 SECONDS" c-M;
+sleep 1
+tmux send -t ${session} "say SHUTTING DOWN IN 3 SECONDS" c-M;
+sleep 1
+tmux send -t ${session} "say SHUTTING DOWN IN 2 SECONDS" c-M;
+sleep 1
+tmux send -t ${session} "say SHUTTING DOWN IN 1 SECONDS" c-M;
+sleep 1
+tmux send -t ${session} "save-all" c-M;
+tmux send -t ${session} "stop" c-M;
